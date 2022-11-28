@@ -1,0 +1,29 @@
+jwt:
+  private.key: classpath:private.pem
+  public.key: classpath:public.pem
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 256MB
+      max-request-size: 256MB
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://localhost:3306/resource_web?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: root
+  data:
+    mongodb:
+      database: webResource
+      host: localhost
+      port: 27017
+
+mybatis:
+  mapper-locations:
+    - classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.squaresponge.resource_web.infrastructure.persistence.mybatis.po
